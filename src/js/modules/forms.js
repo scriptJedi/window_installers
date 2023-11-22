@@ -1,13 +1,11 @@
-const forms = () => {
+import checkNumInputs from "./checkNumInputs";
+
+const forms = (state) => {
   const form = document.querySelectorAll("form"),
     input = document.querySelectorAll("input"),
     phoneInport = document.querySelectorAll("input[name='user_phone']");
 
-  phoneInport.forEach((item) => {
-    item.addEventListener("input", () => {
-      item.value = item.value.replace(/\D/g, "");
-    });
-  });
+  checkNumInputs("input[name='user_phone']");
 
   const message = {
     loading: "Заванатеження...",
@@ -40,6 +38,11 @@ const forms = () => {
       item.append(statusMessage);
 
       const formData = new FormData(item);
+      if (item.getAttribute("data-calc") === "end") {
+        for (let key in state) {
+          formData.append(key, state[key]);
+        }
+      }
 
       postData("assets/server.php", formData)
         .then((res) => {
