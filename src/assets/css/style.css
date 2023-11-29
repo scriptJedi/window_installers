@@ -18,6 +18,19 @@ body {
     color: red;
 }
 
+.faded {
+    animation: faded 1.5s;
+}
+
+@keyframes faded {
+    from {
+        opacity: 0.1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 a:hover {
     text-decoration: none;
 }
@@ -613,6 +626,12 @@ textarea:focus {
     opacity: 1;
 }
 
+.works .popup img {
+    max-width: 600px;
+    width: 100%;
+    object-fit: contain;
+}
+
 /*Guarantees*/
 .guarantees {
     padding: 6rem 0 1rem;
@@ -876,10 +895,10 @@ textarea:focus {
 .popup_calc_end_content {
     /* display: none; */
     position: fixed;
-    top: 10%;
+    top: 50%;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 40rem;
     background-color: #ffffff;
 }
